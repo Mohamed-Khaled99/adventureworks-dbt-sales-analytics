@@ -1,0 +1,135 @@
+version: 2
+
+models:
+
+  - name: dim_customer
+    description: "Customer dimension containing unique customer records used for customer-level analysis."
+    columns:
+
+      - name: customer_id
+        description: "Unique identifier for the customer."
+        data_tests:
+          - not_null
+          - unique
+
+      - name: first_name
+        description: "Customer first name."
+
+      - name: last_name
+        description: "Customer last name."
+
+      - name: company_name
+        description: "Company name associated with the customer."
+
+      - name: email_address
+        description: "Customer email address."
+
+
+  - name: dim_product
+    description: "Product dimension containing product information and pricing details."
+    columns:
+
+      - name: product_id
+        description: "Unique identifier for the product."
+        data_tests:
+          - not_null
+          - unique
+
+      - name: product_name
+        description: "Name of the product."
+
+      - name: product_number
+        description: "Unique product number."
+
+      - name: product_category_id
+        description: "Identifier of the product category."
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_product_category')
+                field: product_category_id
+
+      - name: list_price
+        description: "Standard list price of the product."
+
+
+  - name: dim_product_category
+    description: "Product category dimension containing product categories and business category mappings."
+    columns:
+
+      - name: product_category_id
+        description: "Unique identifier for the product category."
+        data_tests:
+          - not_null
+          - unique
+
+      - name: category_name
+        description: "Name of the product category."
+
+      - name: parent_product_category_id
+        description: "Identifier of the parent product category."
+
+      - name: business_category
+        description: "Business category assigned through the product category mapping seed."
+
+
+  - name: fact_sales
+    description: "Sales fact table containing transaction-level sales data and calculated sales measures."
+    columns:
+
+      - name: sales_order_id
+        description: "Unique identifier for the sales order."
+
+      - name: sales_order_detail_id
+        description: "Unique identifier for each sales order line."
+        data_tests:
+          - not_null
+          - unique
+
+      - name: customer_id
+        description: "Identifier of the customer associated with the sale."
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_customer')
+                field: customer_id
+
+      - name: product_id
+        description: "Identifier of the product associated with the sale."
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_product')
+                field: product_id
+
+      - name: order_date
+        description: "Date when the sales order was created."
+
+      - name: order_quantity
+        description: "Quantity of products sold."
+        data_tests:
+          - not_null
+
+      - name: unit_price
+        description: "Selling price per unit."
+
+      - name: gross_sales
+        description: "Gross sales amount before applying discounts."
+
+      - name: discount_amount
+        description: "Discount amount calculated from gross sales and the applied discount."
+
+      - name: net_sales
+        description: "Net sales amount after applying the line discount."
+        data_tests:
+          - not_null
+
+      - name: order_status
+        description: "Status of the sales order."
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [5]
+
+      - name: modified_date
+        description: "Date and time when the sales order record was last modified."

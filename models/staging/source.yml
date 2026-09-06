@@ -1,0 +1,117 @@
+version: 2
+
+sources:
+  - name: saleslt
+    description: "Raw sales data from the AdventureWorksLT database."
+    schema: SalesLT
+
+    tables:
+
+      - name: Customer
+        description: "Contains customer master data and contact information."
+
+        columns:
+          - name: CustomerID
+            description: "Unique identifier for the customer."
+
+          - name: FirstName
+            description: "Customer first name."
+
+          - name: LastName
+            description: "Customer last name."
+
+          - name: CompanyName
+            description: "Company name associated with the customer."
+
+          - name: EmailAddress
+            description: "Customer email address."
+
+          - name: ModifiedDate
+            description: "Date and time when the customer record was last modified."
+
+
+      - name: Product
+        description: "Contains product master data and pricing information."
+
+        columns:
+          - name: ProductID
+            description: "Unique identifier for the product."
+
+          - name: Name
+            description: "Product name."
+
+          - name: ProductNumber
+            description: "Unique product number."
+
+          - name: ProductCategoryID
+            description: "Identifier of the product category."
+
+          - name: ListPrice
+            description: "Standard list price of the product."
+
+
+      - name: ProductCategory
+        description: "Contains product category information and category hierarchy."
+
+        columns:
+          - name: ProductCategoryID
+            description: "Unique identifier for the product category."
+
+          - name: Name
+            description: "Product category name."
+
+          - name: ParentProductCategoryID
+            description: "Identifier of the parent product category."
+
+
+      - name: SalesOrderHeader
+        description: "Contains sales order header information, including order dates and status."
+
+        freshness:
+          warn_after:
+            count: 1
+            period: day
+          error_after:
+            count: 2
+            period: day
+
+        loaded_at_field: ModifiedDate
+
+        columns:
+          - name: SalesOrderID
+            description: "Unique identifier for the sales order."
+
+          - name: OrderDate
+            description: "Date when the sales order was created."
+
+          - name: CustomerID
+            description: "Identifier of the customer who placed the order."
+
+          - name: Status
+            description: "Current status of the sales order."
+
+          - name: ModifiedDate
+            description: "Date and time when the sales order record was last modified."
+
+
+      - name: SalesOrderDetail
+        description: "Contains sales order line-item information, including products, quantities, prices, and discounts."
+
+        columns:
+          - name: SalesOrderDetailID
+            description: "Unique identifier for the sales order line."
+
+          - name: SalesOrderID
+            description: "Identifier of the sales order."
+
+          - name: ProductID
+            description: "Identifier of the product included in the order."
+
+          - name: OrderQty
+            description: "Quantity of the product sold."
+
+          - name: UnitPrice
+            description: "Selling price per unit."
+
+          - name: UnitPriceDiscount
+            description: "Discount applied to the unit price."
