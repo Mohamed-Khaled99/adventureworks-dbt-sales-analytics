@@ -8,7 +8,7 @@ End-to-end Analytics Engineering project built with **dbt Core + SQL Server**, t
 
 
 
-**Source → Staging → Intermediate → Marts → Power BI**
+##**Source → Staging → Intermediate → Marts → Power BI**
 
 
 <img width="1801" height="885" alt="image" src="https://github.com/user-attachments/assets/e70703a1-da1f-4055-a20d-e5c567e8e45d" />
