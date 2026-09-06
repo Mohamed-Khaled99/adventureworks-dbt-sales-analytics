@@ -62,3 +62,8 @@ seeds/
 snapshots/
 macros/
 tests/
+```
+
+## Documentation 
+<img width="1847" height="925" alt="docs" src="https://github.com/user-attachments/assets/28bdd134-7e1a-4749-8fcf-8e0fabb70868" />
+
