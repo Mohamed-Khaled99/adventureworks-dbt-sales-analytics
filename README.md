@@ -10,7 +10,7 @@ End-to-end Analytics Engineering project built with **dbt Core + SQL Server**, t
 
 
 
-## **Source → Staging → Intermediate → Marts → Power BI**
+## **DAG : Source → Staging → Intermediate → Marts**
 
 
 
