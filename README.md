@@ -3,10 +3,15 @@
 End-to-end Analytics Engineering project built with **dbt Core + SQL Server**, transforming AdventureWorksLT sales data into a tested and documented Star Schema for Power BI.
 
 ## Architecture
+<img width="1024" height="430" alt="image" src="https://github.com/user-attachments/assets/5d3b847c-0f5e-4e34-aec8-ed4f8c726b1f" />
 
-[Architecture Screenshot]
+
+
 
 **Source → Staging → Intermediate → Marts → Power BI**
+
+
+<img width="1801" height="885" alt="image" src="https://github.com/user-attachments/assets/e70703a1-da1f-4055-a20d-e5c567e8e45d" />
 
 ## Data Warehouse
 
@@ -35,18 +40,9 @@ End-to-end Analytics Engineering project built with **dbt Core + SQL Server**, t
 | Documentation | Sources, models, columns & lineage |
 | Materialization | Views / Tables |
 
-## Power BI
+<img width="1920" height="1007" alt="vs" src="https://github.com/user-attachments/assets/3e27308d-5e22-4d0b-8f17-1704c6c901a3" />
 
-[Dashboard Screenshot]
 
-Dashboard includes:
-
-- Total Sales
-- Total Orders
-- Total Customers
-- Sales by Category
-- Sales Trend
-- Top Products
 
 ## Project Structure
 
