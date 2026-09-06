@@ -14,8 +14,8 @@ End-to-end Analytics Engineering project built with **dbt Core + SQL Server**, t
 
 
 
+<img width="1801" height="877" alt="DAG" src="https://github.com/user-attachments/assets/de0f2977-773e-4d62-9c32-69d27bded8de" />
 
-<img width="1801" height="885" alt="image" src="https://github.com/user-attachments/assets/e70703a1-da1f-4055-a20d-e5c567e8e45d" />
 
 ## Data Warehouse
 
